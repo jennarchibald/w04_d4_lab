@@ -1,10 +1,11 @@
-<img src="<%=@house.logo%>" alt="<%=@house.name%> logo">
+<div class = "center">
+<img  src="<%=@house.logo%>" alt="<%=@house.name%> logo">
 
 <h1><%= @house.name%></h1>
 
 <h3>Current Points: <%= @house.points%></h3>
 
-<table>
+<table class = "table">
   <tr>
     <th>First Name</th>
     <th>Last Name</th>
@@ -24,3 +25,4 @@
 
   <%end%>
 </table>
+</div>

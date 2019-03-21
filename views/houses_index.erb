@@ -1,14 +1,28 @@
-<table>
+
   <% for house in @houses%>
-    <tr>
-      <td><img src = "<%=house.logo%>" alt="<%=house.name%> logo"></td>
-      <td><%=house.name%></td>
-      <td>Points: <%=house.points%></td>
-      <td><form action="/houses/<%=house.id%>/" method="get">
-        <input type="submit" name="more" value="More Info">
-      </form></td>
-    </tr>
+  <div class="house_info">
+
+  <img  src = "<%=house.logo%>" alt="<%=house.name%> logo">
+  <table>
+      <tr>
+        <td><%=house.name%></td>
+        <td><form action="/houses/<%=house.id%>/" method="get">
+            <input type="submit" name="more" value="More Info">
+            </form>
+          </td>
+      </tr>
+      <tr>
+        <td>Points: <%=house.points%></td>
+        <td><form action="/houses/<%= house.id %>/edit/" method="post">
+            <input type="number" name="points" id ="points">
+            <input type="submit" name="addorremove" value="Add or Remove Points">
+            </form>
+        </td>
+      </tr>
+    </table>
+
+  </div>
   <%end%>
-</table>
+
 
 <!-- add new house -->

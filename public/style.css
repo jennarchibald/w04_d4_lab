@@ -1,0 +1,66 @@
+img {
+  height: auto;
+  max-width: 12em;
+}
+
+.hogwarts {
+  max-width: 100%;
+  width: 80%;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+ul {
+  display: flex;
+flex-direction: row;
+justify-content: space-around;
+list-style: none;
+}
+
+body {
+  font-family:  arial;
+}
+
+.house_info {
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+.table {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+td, th {
+  padding: 20px;
+    border-bottom: 1px solid gray;
+}
+
+.form {
+  padding:20px;
+}
+
+label {
+  padding-left: 20px;
+  padding-right: 5px;
+}
+
+select {
+  margin-left: 5px;
+  margin-right: 5px;
+}

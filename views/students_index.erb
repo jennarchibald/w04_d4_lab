@@ -1,9 +1,11 @@
+<div class="table">
 <table>
   <tr>
     <th>First Name</th>
     <th>Last Name</th>
     <th>House</th>
     <th>Age</th>
+    <th></th>
   </tr>
   <% for student in @students %>
   <tr>
@@ -18,5 +20,6 @@
 
   <%end%>
 </table>
+</div>
 
-<a href="/students/new/">Add New Student</a>
+<a class = "center" href="/students/new/">Add New Student</a>

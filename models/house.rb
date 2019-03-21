@@ -55,17 +55,18 @@ class House
     return result.map {|hash| Student.new(hash)}
   end
 
-  def add_points(new_points)
-    @points += new_points
+  def add_or_remove_points(new_points)
+    @points += new_points.to_i
+    @points = 0 if @points < 0
     self.update
   end
 
-  def remove_points(lost_points)
-    if @points > lost_points
-      @points -= lost_points
-    else
-      @points = 0
-    end
-    self.update
-  end
+  # def remove_points(lost_points)
+  #   if @points > lost_points
+  #     @points -= lost_points
+  #   else
+  #     @points = 0
+  #   end
+  #   self.update
+  # end
 end
