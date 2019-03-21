@@ -1,19 +1,19 @@
 require_relative ('../db/sql-runner.rb')
 class Student
-  attr_accessor :first_name, :last_name, :house, :age
+  attr_accessor :first_name, :last_name, :house_id, :age
   attr_reader :id
 
   def initialize (options)
     @id = options['id'].to_i if options['id']
     @first_name = options['first_name']
     @last_name = options['last_name']
-    @house = options['house']
+    @house_id = options['house_id'].to_i
     @age = options['age'].to_i
   end
 
   def save()
-    sql = 'INSERT INTO students (first_name, last_name, house, age) VALUES ($1, $2, $3, $4) RETURNING id'
-    values = [@first_name, @last_name, @house, @age]
+    sql = 'INSERT INTO students (first_name, last_name, house_id, age) VALUES ($1, $2, $3, $4) RETURNING id'
+    values = [@first_name, @last_name, @house_id, @age]
     @id = SqlRunner.run(sql, values).first['id'].to_i
   end
 
@@ -29,8 +29,8 @@ class Student
   end
 
   def update()
-    sql = 'UPDATE students SET (first_name, last_name, house, age) = ($1, $2, $3, $4) WHERE id = $5'
-    values =[@first_name, @last_name, @house, @age, @id]
+    sql = 'UPDATE students SET (first_name, last_name, house_id, age) = ($1, $2, $3, $4) WHERE id = $5'
+    values =[@first_name, @last_name, @house_id, @age, @id]
     SqlRunner.run(sql, values)
   end
 
