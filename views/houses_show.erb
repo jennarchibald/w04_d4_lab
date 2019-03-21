@@ -1,0 +1,26 @@
+<img src="<%=@house.logo%>" alt="<%=@house.name%> logo">
+
+<h1><%= @house.name%></h1>
+
+<h3>Current Points: <%= @house.points%></h3>
+
+<table>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>House</th>
+    <th>Age</th>
+  </tr>
+  <% for student in @students %>
+  <tr>
+    <td><%= student.first_name %></td>
+    <td><%= student.last_name %></td>
+    <td><%= student.house.name %></td>
+    <td><%= student.age %></td>
+    <td><form action = "/students/<%=student.id%>/" method="get">
+      <input type="submit" name="more" value="More Details">
+    </form></td>
+  </tr>
+
+  <%end%>
+</table>

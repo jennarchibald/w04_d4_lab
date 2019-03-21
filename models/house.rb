@@ -1,18 +1,20 @@
 require_relative ('../db/sql-runner.rb')
+require_relative ('./student')
 
 class House
   attr_accessor :name, :logo
-  attr_reader :id
+  attr_reader :id, :points
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @name = options['name']
     @logo = options['logo']
+    @points = options['points'].to_i
   end
 
   def save()
-    sql = 'INSERT INTO houses (name, logo) VALUES ($1, $2) RETURNING id'
-    values = [@name, @logo]
+    sql = 'INSERT INTO houses (name, logo, points) VALUES ($1, $2, $3) RETURNING id'
+    values = [@name, @logo, @points]
     @id = SqlRunner.run(sql, values).first['id'].to_i
   end
 
@@ -28,8 +30,8 @@ class House
   end
 
   def update()
-    sql = 'UPDATE houses SET (name, logo) = ($1, $2) WHERE id = $3'
-    values = [@name, @logo, @id]
+    sql = 'UPDATE houses SET (name, logo, points) = ($1, $2, $3) WHERE id = $4'
+    values = [@name, @logo, @points, @id]
     SqlRunner.run(sql, values)
   end
 
@@ -46,4 +48,24 @@ class House
     return House.new(result)
   end
 
+  def students()
+    sql = 'SELECT * FROM students WHERE house_id = $1'
+    values = [@id]
+    result = SqlRunner.run(sql, values)
+    return result.map {|hash| Student.new(hash)}
+  end
+
+  def add_points(new_points)
+    @points += new_points
+    self.update
+  end
+
+  def remove_points(lost_points)
+    if @points > lost_points
+      @points -= lost_points
+    else
+      @points = 0
+    end
+    self.update
+  end
 end

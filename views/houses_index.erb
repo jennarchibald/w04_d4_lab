@@ -1,0 +1,14 @@
+<table>
+  <% for house in @houses%>
+    <tr>
+      <td><img src = "<%=house.logo%>" alt="<%=house.name%> logo"></td>
+      <td><%=house.name%></td>
+      <td>Points: <%=house.points%></td>
+      <td><form action="/houses/<%=house.id%>/" method="get">
+        <input type="submit" name="more" value="More Info">
+      </form></td>
+    </tr>
+  <%end%>
+</table>
+
+<!-- add new house -->

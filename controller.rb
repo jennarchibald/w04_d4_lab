@@ -6,7 +6,7 @@ also_reload('./models/*')
 
 get '/students/' do
   @students = Student.all()
-  erb(:index)
+  erb(:students_index)
 end
 
 get '/students/new/' do
@@ -22,7 +22,7 @@ end
 
 get '/students/:id/' do
   @student = Student.find(params[:id])
-  erb(:show)
+  erb(:students_show)
 end
 
 post '/students/'  do
@@ -41,4 +41,16 @@ post '/students/:id/delete/' do
   student = Student.find(params[:id])
   student.delete()
   redirect '/students/'
+end
+
+
+get '/houses/' do
+  @houses = House.all()
+  erb(:houses_index)
+end
+
+get '/houses/:id/' do
+  @house = House.find(params[:id])
+  @students = @house.students()
+  erb(:houses_show)
 end

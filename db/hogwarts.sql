@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS houses;
 CREATE TABLE houses(
   id SERIAL4 PRIMARY KEY,
   name VARCHAR(255),
+  points INT4,
   logo VARCHAR(255)
 );
 
