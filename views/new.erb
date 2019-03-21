@@ -5,11 +5,10 @@
   <input type="text" name="last_name" id="last-name">
   <label for="age"></label>
   <input type="number" name="age" id="age">
-  <select name="house">
-    <option value="Griffindor">Griffindor</option>
-    <option value="Hufflepuff">Hufflepuff</option>
-    <option value="Ravenclaw">Ravenclaw</option>
-    <option value="Slytherin">Slytherin</option>
+  <select name="house_id">
+    <%for house in @houses%>
+      <option value="<%=house.id%>"><%=house.name%></option>
+    <%end%>
   </select>
   <input type="submit" name="Add Student" value="Add Student">
 </form>

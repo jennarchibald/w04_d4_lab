@@ -26,6 +26,13 @@ slyth = House.new({
 
 slyth.save
 
+rave = House.new({
+  'name' => 'Ravenclaw',
+  'logo' => 'https://vignette.wikia.nocookie.net/harrypotter/images/4/4e/RavenclawCrest.png/revision/latest?cb=20161020182442'
+  })
+
+rave.save
+
 student1 = Student.new({
   'first_name' => 'Harry',
   'last_name' => 'Potter',

@@ -20,4 +20,30 @@ class House
     sql = 'DELETE FROM houses'
     SqlRunner.run(sql)
   end
+
+  def self.all()
+    sql = 'SELECT * FROM houses'
+    results = SqlRunner.run(sql)
+    return results.map {|result| House.new(result)}
+  end
+
+  def update()
+    sql = 'UPDATE houses SET (name, logo) = ($1, $2) WHERE id = $3'
+    values = [@name, @logo, @id]
+    SqlRunner.run(sql, values)
+  end
+
+  def delete()
+    sql = 'DELETE FROM houses WHERE id = $1'
+    values = [@id]
+    SqlRunner.run(sql, values)
+  end
+
+  def self.find(id)
+    sql = 'SELECT * FROM houses WHERE id = $1'
+    values = [id]
+    result = SqlRunner.run(sql, values).first
+    return House.new(result)
+  end
+
 end

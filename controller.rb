@@ -10,10 +10,12 @@ get '/students/' do
 end
 
 get '/students/new/' do
+  @houses = House.all()
   erb(:new)
 end
 
 get '/students/:id/edit/' do
+  @houses = House.all()
   @student = Student.find(params[:id])
   erb(:edit)
 end

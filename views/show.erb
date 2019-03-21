@@ -1,20 +1,18 @@
 <table>
   <tr>
     <th>First Name</th>
-    <th>Last Name</th>
-    <th>House</th>
-    <th>Age</th>
-  </tr>
-  <tr>
     <td><%= @student.first_name %></td>
   </tr>
   <tr>
+    <th>Last Name</th>
     <td><%= @student.last_name %></td>
   </tr>
   <tr>
-    <td><%= @student.house %></td>
+    <th>House</th>
+    <td><%= @student.house.name %></td>
   </tr>
   <tr>
+    <th>Age</th>
     <td><%= @student.age %></td>
   </tr>
   <tr>
@@ -26,3 +24,5 @@
     </form></td>
   </tr>
 </table>
+
+<img src = <%=@student.house.logo%> alt="<%=@student.house.name%> logo">
